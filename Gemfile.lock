@@ -106,6 +106,8 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jwt (2.10.1)
+      base64
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -135,8 +137,6 @@ GEM
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogiri (1.18.8-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.18.8-x64-mingw-ucrt)
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-darwin)
       racc (~> 1.4)
@@ -206,8 +206,6 @@ GEM
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2025.2)
-      tzinfo (>= 1.0.0)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -217,14 +215,14 @@ GEM
 PLATFORMS
   arm64-darwin
   ruby
-  x64-mingw-ucrt
   x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt
   bootsnap
-  debug
+  debug (>= 1.0.0)
+  jwt
   puma (>= 5.0)
   rack-cors (~> 1.1, >= 1.1.1)
   rails (~> 7.1.5, >= 7.1.5.1)

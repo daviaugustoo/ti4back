@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_174846) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_17_002432) do
   create_table "empresas", force: :cascade do |t|
     t.string "nome"
     t.string "cnpj"
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_174846) do
     t.integer "evento_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nome"
+    t.string "telefone"
+    t.string "password_digest"
   end
 
   add_foreign_key "eventos", "empresas"

@@ -6,11 +6,34 @@ class EventosController < ApplicationController
     render json: eventos
   end
 
-  # GET /eventos
   def index
-    @eventos = Evento.all
+    eventos = Evento.all
+    render json: eventos
+  end
 
-    render json: @eventos
+   def eventos_por_data
+    eventos = EventoQuery.new(params).buscar_por_mes_e_ano
+    if eventos.empty?
+      eventos = []
+      render json: eventos
+    else
+      render json: eventos
+    end
+  rescue => e
+    render json: { error: "Não foi possível buscar os eventos", detalhe: e.message }, status: :unprocessable_entity
+  end
+
+
+  def eventos_por_data_id_empresa
+    eventos = EventoQuery.new(params).buscar_por_mes_e_ano_por_empresa
+    if eventos.empty?
+      eventos = []
+      render json: eventos
+    else
+      render json: eventos
+    end
+  rescue => e
+    render json: { error: "Não foi possível buscar os eventos", detalhe: e.message }, status: :unprocessable_entity
   end
 
   # GET /eventos/1
@@ -61,6 +84,6 @@ class EventosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def evento_params
-      params.permit(:nome,:data_inicio, :data_fim, :empresa_id, :id, :organizador, :quantia_de_pessoas, :observacoes, :responsavel_pelo_cadastro)
+      params.permit(:nome,:data_inicio, :data_fim, :empresa_id, :id, :organizador, :quantia_de_pessoas, :observacoes, :responsavel_pelo_cadastro, :mes, :ano)
     end
 end
