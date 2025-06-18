@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  papel: 1.5
+  plastico: 1.5
+  metal: 1.5
+  vidro: 1.5
+  organico: 1.5
+  perigoso: 1.5
+  isopor: 1.5
+  eventoId: 1
+
+two:
+  papel: 1.5
+  plastico: 1.5
+  metal: 1.5
+  vidro: 1.5
+  organico: 1.5
+  perigoso: 1.5
+  isopor: 1.5
+  eventoId: 1
