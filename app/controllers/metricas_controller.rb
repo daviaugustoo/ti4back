@@ -16,20 +16,31 @@ class MetricasController < ApplicationController
   end
 
   # Calcula a média de resíduos por tipo no mês atual
-  def grafico_media_residuos
-    residuos = Residuo.all
-    media = {
-      papel: residuos.average(:papel).to_f,
-      plastico: residuos.average(:plastico).to_f,
-      metal: residuos.average(:metal).to_f,
-      vidro: residuos.average(:vidro).to_f,
-      organico: residuos.average(:organico).to_f,
-      perigoso: residuos.average(:perigoso).to_f,
-      isopor: residuos.average(:isopor).to_f
-    }
-    render json: media
-  end
-
+  def grafico_media_residuos_total
+      residuos = Residuo.all
+      if residuos.empty?
+      render json: {
+        papel: 0.0,
+        plastico: 0.0,
+        metal: 0.0,
+        vidro: 0.0,
+        organico: 0.0,
+        perigoso: 0.0,
+        isopor: 0.0
+      }
+      return
+    end
+      media = {
+        papel: residuos.average(:papel).to_f,
+        plastico: residuos.average(:plastico).to_f,
+        metal: residuos.average(:metal).to_f,
+        vidro: residuos.average(:vidro).to_f,
+        organico: residuos.average(:organico).to_f,
+        perigoso: residuos.average(:perigoso).to_f,
+        isopor: residuos.average(:isopor).to_f
+      }
+      render json: media
+    end
 
     def busca_maior_residuo
       residuos = Residuo.all
