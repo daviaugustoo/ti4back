@@ -21,5 +21,12 @@ test:
   database: storage/test.sqlite3
 
 production:
-  <<: *default
-  database: storage/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: bhtecti4
+  username: bhtecti4_user
+  password: fwwOQXImsSIWRCxzkG0J7hzrOcaVxO2B
+  host: dpg-d19i4t3e5dus7391lhj0-a
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
