@@ -113,7 +113,7 @@ class MetricasController < ApplicationController
     def busca_maior_residuo
       residuos = ResiduoQuery.new(params).buscar_por_mes_e_ano
       if residuos.empty?
-        return ["Nenhum resíduo encontrado", 0]
+        return [nil, 0]
       end
       papel = residuos.maximum(:papel)
       plastico = residuos.maximum(:plastico)
